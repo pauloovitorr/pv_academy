@@ -1,0 +1,189 @@
+.container_autenticacao{
+    width: 100%;
+    height: 100vh;
+    background-color:#fdfdfd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container_login{
+    background-color: white;
+    width: 80%;
+    height: 80vh;
+    max-width: 1260px;
+    max-height: 630px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    border-radius: 10px;
+  }
+  
+  .pai_img,
+  .form_login{
+    width: 50%;
+    height: 100%;
+  }
+  
+  .pai_img{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top-right-radius: 170px;
+    border-bottom-right-radius: 170px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  .pai_img div{
+    height: 140px;
+    color: white;
+    /* border: 1px solid red; */
+  }
+  
+  .pai_img div h2{
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 600;
+  }
+  
+  .pai_img div span{
+    color:#cbcbcb;
+    margin-top: 4px;
+  }
+  
+  .pai_img img{
+    width: 65%;
+  }
+
+  .form_login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+ .texo_login,
+  .formulario_login{
+    width: 70%;
+  }
+  .texo_login{
+    height: 100px;
+    text-align: center;
+  }
+
+
+  .texo_login h1{
+    font-size: 40px;
+    line-height: 38px;
+  }
+
+  .texo_login span{
+    color: #929292;
+  }
+
+  .formulario_login{
+    height: 285px;
+  }
+
+  .formulario_login form{
+    width: 100%;
+    height: 100%;
+  }
+
+
+
+  .componente_form{
+    width: 90%;
+    height: 60px;
+    margin:  0 auto;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .componente_form:nth-child(1),
+  .componente_form:nth-child(2){
+     background-color: #f9f9f9;
+     border-radius: 3px;
+  }
+
+  .componente_form input{
+    width: 90%;
+    height: 100%;
+    border: none;
+    padding-left: 16px;
+    background-color: #f9f9f9;
+    outline: none;
+    font-size: 16px;
+  }
+
+
+  .componente_form {
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+
+
+.componente_form input:focus + .componente_form {
+    box-shadow: 0 0 0 transparent; 
+}
+
+.componente_form.focused {
+    animation: shadowSpread 0.6s ease-in-out forwards;
+}
+
+@keyframes shadowSpread {
+    0% {
+        box-shadow: 0 0 0 0 rgba(218, 78, 253, 0.3); /* Começa sem sombra */
+    }
+    50% {
+        box-shadow: 0 0 15px 5px rgba(218, 78, 253, 0.5); /* Sombra se expande */
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(218, 78, 253, 0); /* Sombra desaparece suavemente */
+    }
+}
+
+
+
+  .componente_form i{
+    color: #bdbdbd;
+  }
+
+  .componente_form a{
+    color: #929292;
+    text-decoration: none;
+  }
+
+  .componente_form a:hover{
+    text-decoration: underline;
+  }
+
+  input::placeholder {
+    color: #bdbdbd;
+    opacity: 1; 
+}
+
+.componente_form button{
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #DA4EFD;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.componente_form button:hover{
+    background-color: #b04bc9;
+}
+  
