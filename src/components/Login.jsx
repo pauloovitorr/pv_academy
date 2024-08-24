@@ -1,15 +1,35 @@
 import "../style_componentes/Login.css";
+import { useEffect } from "react";
 
 export default function Login() {
 
-  document.querySelectorAll('.componente_form input').forEach(input => {
-    input.addEventListener('focus', function() {
-        this.parentElement.classList.add('focused');
+  useEffect(() => {
+    const inputs = document.querySelectorAll('.componente_form input');
+
+    
+    inputs.forEach(input => {
+        input.addEventListener('focus', handleFocus);
+        input.addEventListener('blur', handleBlur);
     });
-    input.addEventListener('blur', function() {
-        this.parentElement.classList.remove('focused');
-    });
-});
+
+
+    return () => {
+        inputs.forEach(input => {
+            input.removeEventListener('focus', handleFocus);
+            input.removeEventListener('blur', handleBlur);
+        });
+    };
+}, []);
+
+
+
+const handleFocus = (event) => {
+    event.target.parentElement.classList.add('focused');
+};
+
+const handleBlur = (event) => {
+    event.target.parentElement.classList.remove('focused');
+};
 
     
     
@@ -45,7 +65,7 @@ export default function Login() {
             <div className="componente_form">
 
               <div>
-                <label htmlFor="email"><i class="fa-solid fa-envelope"></i></label>
+                <label htmlFor="email"><i className="fa-solid fa-envelope"></i></label>
             </div>  
               <input type="email" id="email" placeholder="E-mail" required autoComplete="off" />
               
@@ -54,7 +74,7 @@ export default function Login() {
             <div className="componente_form">
 
             <div>
-               <label htmlFor="senha"> <i class="fa-solid fa-key"></i></label>
+               <label htmlFor="senha"> <i className="fa-solid fa-key"></i></label>
             </div> 
 
               <input type="password" id="senha" placeholder="Senha" required autoComplete="off" />

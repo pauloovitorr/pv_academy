@@ -138,13 +138,13 @@
 
 @keyframes shadowSpread {
   0% {
-      box-shadow: 0 0 0 0 rgba(218, 78, 253, 0.3); 
+      box-shadow: 0 0 0 0 rgba(218, 78, 253, 0.3); /* Começa sem sombra */
   }
   50% {
-      box-shadow: 0 0 10px 5px rgba(218, 78, 253, 0.5); 
+      box-shadow: 0 0 10px 5px rgba(218, 78, 253, 0.5); /* Sombra se expande */
   }
   100% {
-      box-shadow: 0 0 0 0 rgba(218, 78, 253, 0);
+      box-shadow: 0 0 0 0 rgba(218, 78, 253, 0); /* Sombra desaparece suavemente */
   }
 }
 
@@ -188,3 +188,108 @@
     background-color: #b04bc9;
 }
   
+@media (max-width: 768px) {
+
+    .container_login{
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      max-height: 1000px;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+
+    .pai_img{
+      border-top-right-radius:0px;
+      border-bottom-right-radius: 170px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 170px;
+      width: 100%;
+    }
+
+    .pai_img div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #root > div > div > div.pai_img > img{
+      display: none;
+    }
+
+    .form_login,
+    .texo_login{
+      width: 80%;
+    }
+
+    .formulario_login{
+      width: 100%;
+    }
+
+}
+
+@media (max-width: 500px){
+
+  .pai_img{
+    border-top-right-radius:0px;
+    border-bottom-right-radius: 100px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 100px;
+    width: 100%;
+  }
+
+
+
+  .pai_img div h2{
+    font-size: 30px;
+  }
+
+  .pai_img div span{
+    font-size: 15px;
+  }
+
+
+}
+
+
+
+@media (max-width: 375px){
+
+  .pai_img{
+    border-top-right-radius:0px;
+    border-bottom-right-radius: 70px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 70px;
+    width: 100%;
+  }
+
+
+
+  .pai_img div h2{
+    font-size: 24px;
+  }
+
+  .pai_img div span{
+    font-size: 14px;
+  }
+
+  .form_login,
+  .texo_login{
+    width: 96%;
+  }
+
+  .texo_login h1{
+    font-size: 30px;
+  }
+
+  .container_login{
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .container_login{
+    font-size: 13px;
+  }
+
+}
