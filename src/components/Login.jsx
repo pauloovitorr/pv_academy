@@ -2,14 +2,15 @@ import "../style_componentes/Login.css";
 
 export default function Login() {
 
-    document.querySelectorAll('.componente_form input').forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
-        input.addEventListener('blur', function() {
-            this.parentElement.classList.remove('focused');
-        });
+  document.querySelectorAll('.componente_form input').forEach(input => {
+    input.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
     });
+    input.addEventListener('blur', function() {
+        this.parentElement.classList.remove('focused');
+    });
+});
+
     
     
 

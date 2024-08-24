@@ -1,7 +1,7 @@
 .container_autenticacao{
     width: 100%;
     height: 100vh;
-    background-color:#fdfdfd;
+    background-color:#f7f7f7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +13,7 @@
     height: 80vh;
     max-width: 1260px;
     max-height: 630px;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
     display: flex;
     border-radius: 10px;
   }
@@ -127,26 +127,27 @@
 }
 
 
-
-.componente_form input:focus + .componente_form {
-    box-shadow: 0 0 0 transparent; 
+.componente_form {
+  transition: box-shadow 0.4s ease-in-out;
 }
 
+
 .componente_form.focused {
-    animation: shadowSpread 0.6s ease-in-out forwards;
+  animation: shadowSpread 0.5s ease-in-out forwards;
 }
 
 @keyframes shadowSpread {
-    0% {
-        box-shadow: 0 0 0 0 rgba(218, 78, 253, 0.3); /* Começa sem sombra */
-    }
-    50% {
-        box-shadow: 0 0 15px 5px rgba(218, 78, 253, 0.5); /* Sombra se expande */
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(218, 78, 253, 0); /* Sombra desaparece suavemente */
-    }
+  0% {
+      box-shadow: 0 0 0 0 rgba(218, 78, 253, 0.3); 
+  }
+  50% {
+      box-shadow: 0 0 10px 5px rgba(218, 78, 253, 0.5); 
+  }
+  100% {
+      box-shadow: 0 0 0 0 rgba(218, 78, 253, 0);
+  }
 }
+
 
 
 
