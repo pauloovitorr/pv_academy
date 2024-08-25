@@ -8,6 +8,9 @@ export default function Login() {
   const [Email, setEmail] = useState('')
   const [Senha, setSenha] = useState('')
 
+  const [Notifica_email, setotifica_email] = useState('')
+  const [Notifica_senha, setNotifica_senha] = useState('')
+
 
   useEffect(() => {
     
@@ -43,8 +46,30 @@ export default function Login() {
 
   const PostLogin = async (e, email, senha) => {
     e.preventDefault(); 
+
+    setotifica_email('')
+    setNotifica_senha('')
   
     NProgress.start();
+
+
+    if(email === ''){
+      setotifica_email('Prencha o campo de e-mail!')
+      bg_red('email')
+
+      NProgress.done(); 
+      return
+    }
+
+    if(senha === ''){
+      setNotifica_senha('Prencha o campo da senha')
+      bg_red('senha')
+
+      NProgress.done(); 
+      return
+    }
+
+
   
     let dados = {
       emaill: email,
@@ -64,6 +89,15 @@ export default function Login() {
       
       if (resposta.ok) {
         const res = await resposta.json();
+        
+        if(res.status == 'error'){
+          setNotifica_senha(res.message)
+          bg_red('senha')
+          bg_red('email')
+        }else{
+          alert('login')
+        }
+
        
       } else {
         console.error('Erro na requisição:', resposta.status);
@@ -75,6 +109,25 @@ export default function Login() {
     }
   };
 
+
+
+  const bg_red = (campo)=>{
+
+    
+
+    if(campo == 'email'){
+      document.querySelector('.componente_form input[type="email"]').value = ''
+       document.querySelector('.componente_form:nth-child(1)').style.border = '1px solid red';
+       document.querySelector('#root > div > div > div.form_login > div.formulario_login > form > div:nth-child(1) > div:nth-child(1) > label > i').style.color = 'red';
+    }
+
+    if(campo == 'senha'){
+      document.querySelector('.componente_form input[type="password"]').value = ''
+      document.querySelector('.componente_form:nth-child(2)').style.border = '1px solid red';
+      document.querySelector('#root > div > div > div.form_login > div.formulario_login > form > div:nth-child(2) > div:nth-child(1) > label > i').style.color = 'red';
+    }
+
+  }
 
 
   return (
@@ -101,13 +154,24 @@ export default function Login() {
                 <label htmlFor="email"><i className="fa-solid fa-envelope"></i></label>
               </div>
               <input type="email" id="email" placeholder="E-mail" required autoComplete="off" onChange={(e)=> { setEmail(e.target.value) }} />
+
+              <div className="notificacao">
+                  <p> {Notifica_email !== '' ? Notifica_email: ''} </p>
+              </div>
+
+
             </div>
+            
 
             <div className="componente_form">
               <div>
                 <label htmlFor="senha"> <i className="fa-solid fa-key"></i></label>
               </div>
               <input type="password" id="senha" placeholder="Senha" required autoComplete="off" onChange={(e)=> { setSenha(e.target.value) }} />
+              <div className="notificacao">
+              <p> {Notifica_senha !== '' ? Notifica_senha: ''} </p>
+              </div>
+            
             </div>
 
             <div className="componente_form">
