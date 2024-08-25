@@ -149,6 +149,18 @@
 }
 
 
+.container_login #nprogress .bar {
+  background: #DA4EFD; 
+}
+
+.container_login #nprogress .spinner-icon {
+  border-top-color: #DA4EFD;
+  border-left-color: #DA4EFD; 
+}
+
+.container_login #nprogress .peg {
+  box-shadow: 0 0 10px #DA4EFD, 0 0 5px #DA4EFD;
+}
 
 
   .componente_form i{
