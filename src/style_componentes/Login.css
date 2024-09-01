@@ -39,7 +39,7 @@
   .pai_img div{
     height: 140px;
     color: white;
-    /* border: 1px solid red; */
+    width: 80%;
   }
   
   .pai_img div h2{
@@ -52,6 +52,8 @@
     color:#cbcbcb;
     margin-top: 4px;
   }
+  
+  
   
   .pai_img img{
     width: 65%;
@@ -69,8 +71,12 @@
     width: 70%;
   }
   .texo_login{
-    height: 100px;
-    text-align: center;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 18px;
   }
 
 
@@ -211,8 +217,32 @@
 .componente_form button:hover{
     background-color: #b04bc9;
 }
+
+
+@media (max-width: 955px){
+  #root > div > div > div.form_login > div.formulario_login > form > div:nth-child(3) > a{
+    font-size: 12px;
+  }
+
+  .componente_form{
+    width: 95%;
+  }
+
+}
+
   
 @media (max-width: 768px) {
+
+
+  #root > div > div > div.form_login > div.formulario_login > form > div:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #root > div > div > div.form_login > div.formulario_login > form > div:nth-child(3) > a{
+    font-size: 15px;
+  }
 
     .container_login{
       flex-direction: column;
@@ -236,6 +266,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      
     }
 
     #root > div > div > div.pai_img > img{
@@ -253,7 +284,7 @@
 
 }
 
-@media (max-width: 500px){
+@media (max-width: 569px){
 
   .pai_img{
     border-top-right-radius:0px;
@@ -266,7 +297,7 @@
 
 
   .pai_img div h2{
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .pai_img div span{
@@ -277,8 +308,17 @@
 }
 
 
+@media (max-width:500px) {
+  .form_login, .texo_login{
+    width: 90%;
+  }
+}
 
-@media (max-width: 375px){
+
+
+@media (max-width: 397px){
+
+
 
   .pai_img{
     border-top-right-radius:0px;
@@ -286,16 +326,18 @@
     border-top-left-radius: 0px;
     border-bottom-left-radius: 70px;
     width: 100%;
+    height: 100px;
   }
 
 
 
   .pai_img div h2{
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 20px;
   }
 
   .pai_img div span{
-    font-size: 14px;
+    font-size: 11px;
   }
 
   .form_login,
@@ -304,16 +346,35 @@
   }
 
   .texo_login h1{
-    font-size: 30px;
+    font-size: 22px;
+    line-height: 22px;
   }
 
   .container_login{
-    gap: 20px;
+    gap: 0px;
     padding-bottom: 20px;
   }
 
   .container_login{
     font-size: 13px;
+  }
+
+  .componente_form{
+    height: 50px;
+  }
+
+  .componente_form button{
+    width: 60%;
+    height: 70%;
+    font-size: 16px;
+  }
+
+  #root > div > div > div.form_login > div.formulario_login > form > div:nth-child(3) > a{
+    font-size: 13px;
+  }
+
+  #root > div > div > div.form_login > div.formulario_login > form > div:nth-child(3){
+    margin-bottom: 0px;
   }
 
 }

@@ -1,0 +1,354 @@
+.container_autenticacao_cad {
+    width: 100%;
+    height: 100vh;
+    background-color: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container_login_cad {
+    background-color: white;
+    width: 80%;
+    height: 80vh;
+    max-width: 1260px;
+    max-height: 630px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    border-radius: 10px;
+  }
+  
+  .pai_img_cad,
+  .form_login_cad {
+    width: 50%;
+    height: 100%;
+  }
+  
+  .pai_img_cad {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top-right-radius: 170px;
+    border-bottom-right-radius: 170px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  .pai_img_cad div {
+    height: 140px;
+    width: 80%;
+    color: white;
+  }
+  
+  .pai_img_cad div h2 {
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 600;
+  }
+  
+  .pai_img_cad div span {
+    color: #cbcbcb;
+    margin-top: 4px;
+  }
+  
+  .pai_img_cad img {
+    width: 65%;
+  }
+  
+  .form_login_cad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .texto_login_cad,
+  .formulario_login_cad {
+    width: 70%;
+  }
+  
+  .texto_login_cad {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  
+  .texto_login_cad h1 {
+    font-size: 40px;
+    line-height: 38px;
+  }
+  
+  .texto_login_cad span {
+    color: #929292;
+  }
+  
+  .formulario_login_cad {
+    height: auto;
+  }
+  
+  .formulario_login_cad form {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .componente_form_cad {
+    width: 90%;
+    height: 60px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .notificacao_cad {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  .notificacao_cad p {
+    font-size: 13px;
+    color: red;
+  }
+  
+  .componente_form_cad:nth-child(1),
+  .componente_form_cad:nth-child(2),
+  .componente_form_cad:nth-child(3),
+  .componente_form_cad:nth-child(4){
+    background-color: #f9f9f9;
+    border-radius: 3px;
+  }
+
+  .componente_form_cad:nth-child(5){
+    height: 20px;
+  }
+  
+  .componente_form_cad input {
+    width: 90%;
+    height: 100%;
+    border: none;
+    padding-left: 16px;
+    background-color: #f9f9f9;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .componente_form_cad {
+    transition: box-shadow 0.5s ease-in-out;
+  }
+  
+  .componente_form_cad.focused {
+    animation: shadowSpread_cad 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes shadowSpread_cad {
+    0% {
+      box-shadow: 0 0 0 0 rgba(218, 78, 253, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 10px 5px rgba(218, 78, 253, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(218, 78, 253, 0);
+    }
+  }
+  
+  .container_login_cad #nprogress .bar {
+    background: #DA4EFD;
+  }
+  
+  .container_login_cad #nprogress .spinner-icon {
+    border-top-color: #DA4EFD;
+    border-left-color: #DA4EFD;
+  }
+  
+  .container_login_cad #nprogress .peg {
+    box-shadow: 0 0 10px #DA4EFD, 0 0 5px #DA4EFD;
+  }
+  
+  .componente_form_cad i {
+    color: #bdbdbd;
+  }
+  
+  .componente_form_cad a {
+    color: #929292;
+    text-decoration: none;
+  }
+  
+  .componente_form_cad a:hover {
+    text-decoration: underline;
+  }
+  
+  input::placeholder {
+    color: #bdbdbd;
+    opacity: 1;
+  }
+  
+  .componente_form_cad button {
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #DA4EFD;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+  }
+  
+  .componente_form_cad button:hover {
+    background-color: #b04bc9;
+  }
+  
+  @media (max-width: 768px) {
+  
+    .container_login_cad {
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      max-height: 1000px;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+  
+    .pai_img_cad {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 170px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 170px;
+      width: 100%;
+    }
+  
+    .pai_img_cad div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #root > div > div > div.pai_img_cad > img {
+      display: none;
+    }
+  
+    .form_login_cad,
+    .texto_login_cad {
+      width: 80%;
+    }
+  
+    .formulario_login_cad {
+      width: 100%;
+    }
+  
+  }
+
+
+  @media (max-width: 600px){
+    .pai_img_cad div h2{
+      font-size: 26px;
+    }
+
+    .texto_login_cad h1{
+      font-size: 36px;
+    }
+
+
+  } 
+  
+  @media (max-width: 500px) {
+  
+    .pai_img_cad {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 100px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 100px;
+      width: 100%;
+    }
+
+    .pai_img_cad div h2 {
+      font-size: 22px;
+      line-height: 22px;
+    }
+  
+    .texto_login_cad h1{
+      font-size: 32px;
+    }
+  
+    .pai_img_cad div span {
+      font-size: 15px;
+    }
+
+    .form_login_cad, .texto_login_cad{
+      width: 90%;
+    }
+  
+  }
+  
+  @media (max-width: 375px) {
+  
+    .pai_img_cad {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 70px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 70px;
+      width: 100%;
+    }
+  
+    
+  
+    .pai_img_cad div span {
+      font-size: 14px;
+    }
+  
+    .form_login_cad,
+    .texto_login_cad {
+      width: 90%;
+    }
+  
+    .texto_login_cad h1 {
+      font-size: 30px;
+    }
+  
+    .container_login_cad {
+      gap: 20px;
+      padding-bottom: 20px;
+    }
+  
+    .container_login_cad {
+      font-size: 13px;
+    }
+  
+  }
+
+
+  @media (max-width:375px) {
+    
+    .pai_img_cad div h2 {
+      font-size: 17px;
+    }
+
+    .pai_img_cad div span{
+      font-size: 12px;
+    }
+
+    .texto_login_cad h1{
+      font-size: 26px;
+    }
+
+  }
+
+  
+
+  

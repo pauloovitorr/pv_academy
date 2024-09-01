@@ -175,7 +175,8 @@ export default function Login() {
             </div>
 
             <div className="componente_form">
-              <a href="">Não tem conta? Cadastre-se agora mesmo!</a>
+              <a href="/cadastro">Esqueceu sua senha? Clique aqui</a>
+              <a href="/cadastro">Não tem conta? Cadastre-se agora!</a>
             </div>
 
             <div className="componente_form">
