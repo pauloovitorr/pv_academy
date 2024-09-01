@@ -5,11 +5,15 @@ import React, { useEffect, useState } from "react";
 
 export default function CadastroCad() {
 
+  const [Nome, setNome] = useState('');
   const [Email, setEmail] = useState('');
   const [Senha, setSenha] = useState('');
+  const [Confirma_Senha, setConfirma_Senha] = useState('');
 
-  const [Notifica_email, setotifica_email] = useState('');
+  const [Notifica_nome, setNotifica_nome] = useState('');
+  const [Notifica_email, setNotifica_email] = useState('');
   const [Notifica_senha, setNotifica_senha] = useState('');
+  const [Notifica_confirma, setNotifica_confirma] = useState('');
 
   useEffect(() => {
     NProgress.configure({ parent: '.container_login_cad' });
@@ -37,16 +41,25 @@ export default function CadastroCad() {
     event.target.parentElement.classList.remove('focused');
   };
 
-  const PostLogin = async (e, email, senha) => {
+  const PostCadastro = async (e,nome, email, senha, confirma_senha) => {
     e.preventDefault(); 
 
-    setotifica_email('');
+    setNotifica_nome('');
+    setNotifica_email('');
     setNotifica_senha('');
-
+    setNotifica_confirma('')
+    
     NProgress.start();
 
+    if (nome === '') {
+      setNotifica_nome('Preencha o campo de nome!');
+      bg_red('nome');
+      NProgress.done(); 
+      return;
+    }
+
     if (email === '') {
-      setotifica_email('Preencha o campo de e-mail!');
+      setNotifica_email('Preencha o campo de e-mail!');
       bg_red('email');
       NProgress.done(); 
       return;
@@ -59,13 +72,28 @@ export default function CadastroCad() {
       return;
     }
 
+    if (confirma_senha === '') {
+      setNotifica_confirma('Preencha o campo de confirmação de senha');
+      bg_red('confirma');
+      NProgress.done(); 
+      return;
+    }
+
+    if( !verifica_senha() ){
+      setNotifica_confirma('A senha não confere!');
+      bg_red('confirma');
+      NProgress.done(); 
+      return
+    }
+
+
     let dados = {
       emaill: email,
       senhaa: senha
     };
 
     try {
-      const resposta = await fetch('http://localhost/pv_academy/backend/Login.php', {
+      const resposta = await fetch('http://localhost/pv_academy/backend/Cadastro.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -94,17 +122,68 @@ export default function CadastroCad() {
   };
 
   const bg_red = (campo) => {
-    if (campo === 'email') {
-      document.querySelector('.componente_form_cad input[type="email"]').value = '';
+
+    if (campo === 'nome') {
+      document.querySelector('#nome').value = '';
       document.querySelector('.componente_form_cad:nth-child(1)').style.border = '1px solid red';
-      document.querySelector('#root > div > div > div.form_login_cad > div.formulario_login_cad > form > div:nth-child(1) > div:nth-child(1) > label > i').style.color = 'red';
+      document.querySelector('form > div:nth-child(1) > div:nth-child(1) > label > i').style.color = 'red';
+    }
+
+
+    if (campo === 'email') {
+      document.querySelector('#email').value = '';
+      document.querySelector('.componente_form_cad:nth-child(2)').style.border = '1px solid red';
+      document.querySelector('form > div:nth-child(2) > div:nth-child(1) > label > i').style.color = 'red';
     }
 
     if (campo === 'senha') {
-      document.querySelector('.componente_form_cad input[type="password"]').value = '';
-      document.querySelector('.componente_form_cad:nth-child(2)').style.border = '1px solid red';
-      document.querySelector('#root > div > div > div.form_login_cad > div.formulario_login_cad > form > div:nth-child(2) > div:nth-child(1) > label > i').style.color = 'red';
+      document.querySelector('#senha').value = '';
+      document.querySelector('.componente_form_cad:nth-child(3)').style.border = '1px solid red';
+      document.querySelector('form > div:nth-child(3) > div:nth-child(1) > label > i').style.color = 'red';
     }
+
+    if (campo === 'confirma') {
+      document.querySelector('#senha_confirmacao').value = '';
+      document.querySelector('.componente_form_cad:nth-child(4)').style.border = '1px solid red';
+      document.querySelector('form > div:nth-child(4) > div:nth-child(1) > label > i').style.color = 'red';
+    }
+
+
+  }
+
+  const remover_bg = (e)=>{
+    if(e.target.value !== '' && e.target.value.length > 3){
+      e.target.parentElement.style = 'border:none'
+      e.target.parentElement.querySelector('i').style.color = ' #bdbdbd'
+      
+      let id_elemento = e.target.parentElement.querySelector('input').getAttribute('id')
+      
+      switch (id_elemento){
+        case 'nome':
+          setNotifica_nome('')
+          break
+          case 'email':
+          setNotifica_email('')
+          break
+          case 'senha':
+          setNotifica_senha('')
+          break
+          case 'confirma_senha':
+          setNotifica_confirma('')
+          break
+      }
+      
+    }  
+  }
+
+  const verifica_senha = ()=>{
+    if(Senha === Confirma_Senha ){
+      return true
+    }
+    else{
+      return false
+    }
+
   }
 
   return (
@@ -124,15 +203,15 @@ export default function CadastroCad() {
         </div>
 
         <div className="formulario_login_cad">
-          <form action="" onSubmit={(e)=> { PostLogin(e,Email, Senha) }}>
+          <form action="" onSubmit={(e)=> { PostCadastro(e,Nome,Email, Senha, Confirma_Senha) }}>
             <div className="componente_form_cad">
               <div>
                 <label htmlFor="nome"><i className="fa-solid fa-user"></i></label>
               </div>
-              <input type="text" id="nome" placeholder="Nome" required autoComplete="off"/>
+              <input type="text" id="nome" minLength={4} placeholder="Nome" autoComplete="off" onChange={(e)=> { setNome(e.target.value) } } onBlur={(e) => { remover_bg(e) } } required/>
 
               <div className="notificacao_cad">
-                <p> {Notifica_email !== '' ? Notifica_email: ''} </p>
+                <p> {Notifica_nome !== '' ? Notifica_nome: ''} </p>
               </div>
             </div>
 
@@ -140,7 +219,7 @@ export default function CadastroCad() {
               <div>
                 <label htmlFor="email"><i className="fa-solid fa-envelope"></i></label>
               </div>
-              <input type="email" id="email" placeholder="E-mail" required autoComplete="off" onChange={(e)=> { setEmail(e.target.value) }} />
+              <input type="email" id="email" placeholder="E-mail" minLength={4} autoComplete="off" onChange={(e)=> { setEmail(e.target.value) }} onBlur={(e) => { remover_bg(e) } } required/>
 
               <div className="notificacao_cad">
                 <p> {Notifica_email !== '' ? Notifica_email: ''} </p>
@@ -151,7 +230,7 @@ export default function CadastroCad() {
               <div>
                 <label htmlFor="senha"> <i className="fa-solid fa-key"></i></label>
               </div>
-              <input type="password" id="senha" placeholder="Senha" required autoComplete="off" onChange={(e)=> { setSenha(e.target.value) }} />
+              <input type="password" id="senha" placeholder="Senha" minLength={6} autoComplete="off" onChange={(e)=> { setSenha(e.target.value) }} onBlur={(e) => { remover_bg(e) } } required />
               <div className="notificacao_cad">
                 <p> {Notifica_senha !== '' ? Notifica_senha: ''} </p>
               </div>
@@ -161,9 +240,9 @@ export default function CadastroCad() {
               <div>
                 <label htmlFor="senha_confirmacao"> <i className="fa-solid fa-key"></i></label>
               </div>
-              <input type="password" id="senha_confirmacao" placeholder="Confirme a senha" required autoComplete="off" onChange={(e)=> { setSenha(e.target.value) }} />
+              <input type="password" id="senha_confirmacao" placeholder="Confirme a senha" minLength={6} autoComplete="off" onChange={(e)=> { setConfirma_Senha(e.target.value) }}  onBlur={(e) => { remover_bg(e) }} required/>
               <div className="notificacao_cad">
-                <p> {Notifica_senha !== '' ? Notifica_senha: ''} </p>
+                <p> {Notifica_confirma !== '' ? Notifica_confirma: ''} </p>
               </div>
             </div>
 
